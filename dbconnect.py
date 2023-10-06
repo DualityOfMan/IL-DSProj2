@@ -87,7 +87,7 @@ def passengerDest():
         conn = MySQLConnection(**dbconfig)
         cursor = conn.cursor()
         cursor.execute(
-            "SELECT passengers.passengerID FROM passengers INNER JOIN flights WHERE flights.arrival = "+"'"+chosenArr+"'")
+            "SELECT firstName,lastName FROM passengers INNER JOIN flights ON flights.passengerID = passengers.passengerID WHERE flights.arrival = "+"'"+chosenArr+"'")
         rows = cursor.fetchall()
 
         for row in rows:
